@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeVC.swift
 //  htchhkr
 //
 //  Created by Spencer Yang on 12/22/17.
@@ -9,10 +9,12 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class HomeVC: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var actionButton: RoundedShadowButton!
+    
+    var delegate : CenterVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,5 +26,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         actionButton.animateButton(shouldLoad: true, withMessage: nil)
     }
     
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        delegate?.toggleLeftPanel()
+    }
 }
 
