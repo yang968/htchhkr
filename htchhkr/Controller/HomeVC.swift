@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import RevealingSplashView
 
 class HomeVC: UIViewController, MKMapViewDelegate {
     
@@ -16,10 +17,18 @@ class HomeVC: UIViewController, MKMapViewDelegate {
     
     var delegate : CenterVCDelegate?
     
+    let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "launchScreenIcon")!, iconInitialSize: CGSize(width: 80, height: 80), backgroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mapView.delegate = self
+        
+        self.view.addSubview(revealingSplashView)
+        revealingSplashView.animationType = SplashAnimationType.heartBeat
+        revealingSplashView.startAnimation()
+        
+        // Stops the animation
+        revealingSplashView.heartAttack = true
     }
 
     @IBAction func actionButtonPressed(_ sender: Any) {
