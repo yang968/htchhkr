@@ -24,6 +24,8 @@
 		704212D81FF8B74C004F0914 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704212D71FF8B74C004F0914 /* CircleView.swift */; };
 		704212DA1FF8B88B004F0914 /* RoundedShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704212D91FF8B88B004F0914 /* RoundedShadowButton.swift */; };
 		706C09E71FFF500100E3DCC8 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706C09E61FFF500100E3DCC8 /* RoundedTextField.swift */; };
+		70C0B92820035E1A00449E3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C0B92720035E1A00449E3C /* GoogleService-Info.plist */; };
+		70C0B92D20035F6C00449E3C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0B92C20035F6C00449E3C /* DataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		704212D71FF8B74C004F0914 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		704212D91FF8B88B004F0914 /* RoundedShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowButton.swift; sourceTree = "<group>"; };
 		706C09E61FFF500100E3DCC8 /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		70C0B92720035E1A00449E3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		70C0B92C20035F6C00449E3C /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		F7EE41566737A0E30C10449D /* Pods-htchhkr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htchhkr.release.xcconfig"; path = "Pods/Target Support Files/Pods-htchhkr/Pods-htchhkr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +87,7 @@
 		700FB5EE1FECD8130054C524 /* htchhkr */ = {
 			isa = PBXGroup;
 			children = (
+				70C0B92920035F5000449E3C /* Services */,
 				703410DB1FFC7340009402EE /* Extensions */,
 				703410D81FFBAAD7009402EE /* Protocols */,
 				704212CF1FF8915B004F0914 /* Model */,
@@ -93,6 +98,7 @@
 				700FB5F61FECD8130054C524 /* Assets.xcassets */,
 				700FB5F81FECD8130054C524 /* LaunchScreen.storyboard */,
 				700FB5FB1FECD8130054C524 /* Info.plist */,
+				70C0B92720035E1A00449E3C /* GoogleService-Info.plist */,
 			);
 			path = htchhkr;
 			sourceTree = "<group>";
@@ -142,6 +148,14 @@
 				706C09E61FFF500100E3DCC8 /* RoundedTextField.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		70C0B92920035F5000449E3C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				70C0B92C20035F6C00449E3C /* DataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		9327224CE8D1837BB1E7E66D /* Frameworks */ = {
@@ -224,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				700FB5FA1FECD8130054C524 /* LaunchScreen.storyboard in Resources */,
+				70C0B92820035E1A00449E3C /* GoogleService-Info.plist in Resources */,
 				700FB5F71FECD8130054C524 /* Assets.xcassets in Resources */,
 				700FB5F51FECD8130054C524 /* Main.storyboard in Resources */,
 			);
@@ -299,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				703410DA1FFBAAED009402EE /* CenterVCDelegate.swift in Sources */,
+				70C0B92D20035F6C00449E3C /* DataService.swift in Sources */,
 				704212DA1FF8B88B004F0914 /* RoundedShadowButton.swift in Sources */,
 				703410DF1FFC80E5009402EE /* LoginVC.swift in Sources */,
 				706C09E71FFF500100E3DCC8 /* RoundedTextField.swift in Sources */,

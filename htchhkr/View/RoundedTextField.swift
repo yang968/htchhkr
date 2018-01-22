@@ -22,11 +22,11 @@ class RoundedTextField: UITextField {
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(x: 0 + textRectOffset, y: 0 + (textRectOffset * 0.75), width: self.frame.width - textRectOffset, height: self.frame.height)
+        return CGRect(x: 0 + textRectOffset, y: 0 + (textRectOffset * 0.8), width: self.frame.width - textRectOffset, height: self.frame.height)
     }
     
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(x: 0 + textRectOffset, y: 0 + (textRectOffset * 0.75), width: self.frame.width - textRectOffset, height: self.frame.height)
+        return CGRect(x: 0 + textRectOffset, y: 0 + (textRectOffset * 0.8), width: self.frame.width - textRectOffset, height: self.frame.height)
     }
     
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
