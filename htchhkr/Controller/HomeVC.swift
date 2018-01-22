@@ -83,4 +83,16 @@ extension HomeVC: MKMapViewDelegate {
         UpdateService.instance.updateDriverLocation(coordinate: userLocation.coordinate)
         UpdateService.instance.updateUserLocation(coordinate: userLocation.coordinate)
     }
+    
+    // If an annotation represents a driver, display driverAnnotation image
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? DriverAnnotation {
+            let identifier = "driver"
+            var view : MKAnnotationView
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.image = UIImage(named: "driverAnnotation")
+            return view
+        }
+        return nil
+    }
 }
