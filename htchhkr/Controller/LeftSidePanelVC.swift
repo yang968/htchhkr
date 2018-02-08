@@ -27,7 +27,7 @@ class LeftSidePanelVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("View Will Appear")
+        //print("View Will Appear")
         pickupModeSwitch.isOn = false
         pickupModeSwitch.isHidden = true
         pickupModeLabel.isHidden = true
