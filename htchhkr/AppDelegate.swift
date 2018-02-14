@@ -20,15 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return containerVC
     }
 
+    override init() {
+        super.init()
+        FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
         
         containerVC = ContainerVC()
         window?.rootViewController = containerVC
         window?.makeKeyAndVisible()
-        
-        
         return true
     }
 

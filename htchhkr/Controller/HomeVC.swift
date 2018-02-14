@@ -20,8 +20,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var destinationTextField: UITextField!
     @IBOutlet weak var destinationCircle: CircleView!
     
-    
     var delegate : CenterVCDelegate?
+    var currentUserId = Auth.auth().currentUser?.uid
     
     var manager: CLLocationManager?
     var regionRadius : CLLocationDistance = 1000
@@ -150,14 +150,18 @@ extension HomeVC: MKMapViewDelegate {
     
     // If an annotation represents a driver, display driverAnnotation image
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var view: MKAnnotationView?
+        
         if let annotation = annotation as? DriverAnnotation {
             let identifier = "driver"
-            var view : MKAnnotationView
             view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.image = UIImage(named: "driverAnnotation")
-            return view
+            view!.image = UIImage(named: "driverAnnotation")
+        } else if let annotation = annotation as? PassengerAnnotation {
+            let identifier = "passenger"
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view!.image = UIImage(named: "currentLocationAnnotation")
         }
-        return nil
+        return view
     }
     
     // When the mapView's region is changing, center button will fade out
@@ -282,8 +286,19 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let passengerCoordinate = manager?.location?.coordinate
+        let passengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)
+        mapView.addAnnotation(passengerAnnotation)
+        
+        destinationTextField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        
+        let selectedMapItem = matchingItems[indexPath.row]
+        DataService.instance.REF_USERS.child(currentUserId!).updateChildValues(["tripCoordinate":
+            [selectedMapItem.placemark.coordinate.latitude,
+            selectedMapItem.placemark.coordinate.longitude]
+            ])
+        
         animateTableView(shouldShow: false)
-        print("\(indexPath.row) selected")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
