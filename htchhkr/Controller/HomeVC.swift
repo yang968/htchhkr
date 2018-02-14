@@ -31,6 +31,9 @@ class HomeVC: UIViewController {
     var tableView = UITableView()
     var matchingItems : [MKMapItem] = [MKMapItem]()
     
+    var selectedItemPlacemark : MKPlacemark? = nil
+    var route : MKRoute!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -160,6 +163,17 @@ extension HomeVC: MKMapViewDelegate {
             let identifier = "passenger"
             view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view!.image = UIImage(named: "currentLocationAnnotation")
+        } else if let annotation = annotation as? MKPointAnnotation {
+            // Place destination annotation
+            let identifier = "destination"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            } else {
+                annotationView?.annotation = annotation
+            }
+            annotationView?.image = UIImage(named: "destinationAnnotation")
+            return annotationView
         }
         return view
     }
@@ -167,6 +181,15 @@ extension HomeVC: MKMapViewDelegate {
     // When the mapView's region is changing, center button will fade out
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         centerMapButton.fadeTo(alpha: 1.0, duration: 0.2)
+    }
+    
+    // Display route on the map
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let lineRenderer = MKPolylineRenderer(overlay: route.polyline)
+        lineRenderer.strokeColor = UIColor(red: 216/255, green: 71/255, blue: 30/255, alpha: 0.75)
+        lineRenderer.lineWidth = 3
+        
+        return lineRenderer
     }
     
     func performSearch() {
@@ -189,8 +212,44 @@ extension HomeVC: MKMapViewDelegate {
                 for mapItem in response!.mapItems {
                     self.matchingItems.append(mapItem)
                     self.tableView.reloadData()
+                    self.shouldPresentLoadingView(false)
                 }
             }
+        }
+    }
+    
+    func dropPinFor(placemark: MKPlacemark) {
+        selectedItemPlacemark = placemark
+        
+        for annotation in mapView.annotations {
+            if annotation.isKind(of: MKPointAnnotation.self) {
+                mapView.removeAnnotation(annotation)
+            }
+        }
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        mapView.addAnnotation(annotation)
+    }
+    
+    func searchMapKitForResultsWithPolyLine(forMapItem mapItem: MKMapItem) {
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = mapItem
+        request.transportType = .automobile
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { (response, error) in
+            guard let response = response else {
+                print(error.debugDescription)
+                return
+            }
+            
+            // first route is usually optimal route
+            self.route = response.routes.first
+            self.mapView.add(self.route.polyline)
+            
+            self.shouldPresentLoadingView(false)
         }
     }
 }
@@ -241,6 +300,7 @@ extension HomeVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == destinationTextField {
             performSearch()
+            shouldPresentLoadingView(true)
             view.endEditing(true)
         }
         return true
@@ -286,6 +346,8 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        shouldPresentLoadingView(true)
+        
         let passengerCoordinate = manager?.location?.coordinate
         let passengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)
         mapView.addAnnotation(passengerAnnotation)
@@ -297,6 +359,9 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
             [selectedMapItem.placemark.coordinate.latitude,
             selectedMapItem.placemark.coordinate.longitude]
             ])
+        
+        dropPinFor(placemark: selectedMapItem.placemark)
+        searchMapKitForResultsWithPolyLine(forMapItem: selectedMapItem)
         
         animateTableView(shouldShow: false)
     }

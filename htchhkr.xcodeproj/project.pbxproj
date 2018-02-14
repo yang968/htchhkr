@@ -29,6 +29,7 @@
 		70C0B92820035E1A00449E3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70C0B92720035E1A00449E3C /* GoogleService-Info.plist */; };
 		70C0B92D20035F6C00449E3C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0B92C20035F6C00449E3C /* DataService.swift */; };
 		70C53743202FEEDE00380390 /* PassengerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C53742202FEEDD00380390 /* PassengerAnnotation.swift */; };
+		70C537722033FDA400380390 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C537712033FDA300380390 /* UIViewControllerExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		70C0B92720035E1A00449E3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		70C0B92C20035F6C00449E3C /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		70C53742202FEEDD00380390 /* PassengerAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerAnnotation.swift; sourceTree = "<group>"; };
+		70C537712033FDA300380390 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		F7EE41566737A0E30C10449D /* Pods-htchhkr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htchhkr.release.xcconfig"; path = "Pods/Target Support Files/Pods-htchhkr/Pods-htchhkr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				703410DC1FFC7352009402EE /* UIViewExt.swift */,
+				70C537712033FDA300380390 /* UIViewControllerExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				703410DA1FFBAAED009402EE /* CenterVCDelegate.swift in Sources */,
 				70C0B92D20035F6C00449E3C /* DataService.swift in Sources */,
+				70C537722033FDA400380390 /* UIViewControllerExt.swift in Sources */,
 				704212DA1FF8B88B004F0914 /* RoundedShadowButton.swift in Sources */,
 				703410DF1FFC80E5009402EE /* LoginVC.swift in Sources */,
 				706C09E71FFF500100E3DCC8 /* RoundedTextField.swift in Sources */,
