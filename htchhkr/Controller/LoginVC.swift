@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginVC: UIViewController, UITextFieldDelegate {
+class LoginVC: UIViewController, UITextFieldDelegate, Alertable {
 
     @IBOutlet weak var emailField: RoundedTextField!
     @IBOutlet weak var passwordField: RoundedTextField!
@@ -68,9 +68,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         if let errorCode = AuthErrorCode(rawValue: error!._code) {
                             switch errorCode {
                             case .wrongPassword :
-                                print("Incorrect Password. Please try again")
+                                self.showAlert("Incorrect Password. Please try again")
                             default :
-                                print("Unexpected Error Occurred. Please try again")
+                                self.showAlert("Unexpected Error Occurred. Please try again")
                             }
                         }
                         
@@ -79,9 +79,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 if let errorCode = AuthErrorCode(rawValue: error!._code) {
                                     switch errorCode {
                                     case .invalidEmail :
-                                        print("Invalid Email. Please try again")
+                                        self.showAlert("Invalid Email. Please try again")
                                     default :
-                                        print("Unexpected Error Occurred. Please try again")
+                                        self.showAlert("Unexpected Error Occurred. Please try again")
                                     }
                                 }
                             }

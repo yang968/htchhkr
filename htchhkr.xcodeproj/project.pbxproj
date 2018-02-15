@@ -30,6 +30,7 @@
 		70C0B92D20035F6C00449E3C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0B92C20035F6C00449E3C /* DataService.swift */; };
 		70C53743202FEEDE00380390 /* PassengerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C53742202FEEDD00380390 /* PassengerAnnotation.swift */; };
 		70C537722033FDA400380390 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C537712033FDA300380390 /* UIViewControllerExt.swift */; };
+		70C5377420353FFD00380390 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C5377320353FFD00380390 /* Alertable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		70C0B92C20035F6C00449E3C /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		70C53742202FEEDD00380390 /* PassengerAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerAnnotation.swift; sourceTree = "<group>"; };
 		70C537712033FDA300380390 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		70C5377320353FFD00380390 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		F7EE41566737A0E30C10449D /* Pods-htchhkr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htchhkr.release.xcconfig"; path = "Pods/Target Support Files/Pods-htchhkr/Pods-htchhkr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				703410D91FFBAAED009402EE /* CenterVCDelegate.swift */,
+				70C5377320353FFD00380390 /* Alertable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				70C53743202FEEDE00380390 /* PassengerAnnotation.swift in Sources */,
 				703410D71FFB2701009402EE /* ContainerVC.swift in Sources */,
 				706BEDAE2015B32C007537FB /* DriverAnnotation.swift in Sources */,
+				70C5377420353FFD00380390 /* Alertable.swift in Sources */,
 				703410DD1FFC7352009402EE /* UIViewExt.swift in Sources */,
 				706BEDAC20157C63007537FB /* UpdateService.swift in Sources */,
 				700FB5F21FECD8130054C524 /* HomeVC.swift in Sources */,
